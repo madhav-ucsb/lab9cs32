@@ -1,7 +1,7 @@
 #include "EmptyListException.h"
 #include "FullListException.h"
 #include "InvalidIndexException.h"
-
+#include "SimpleList.h"
 
 #include <stdexcept>
 template <class T>
@@ -21,7 +21,7 @@ bool SimpleList<T>::empty() const
 template <class T>
 T SimpleList<T>::at(int index) const
 {
-  if (index>=numElements)
+  if (index>=numElements|| index<0)
   {
     throw InvalidIndexException();
   }
@@ -72,13 +72,20 @@ void SimpleList<T>::insert(T item)
 
 }
 template <class T>
+SimpleList<T>::~SimpleList()
+{
+  delete[] elements;
+  
+}
+
+template <class T>
 void SimpleList<T>::remove(int index)
 {
   if(empty())
   {
     throw EmptyListException();
   }
-  if (numElements<=index)
+  if (numElements<=index || index<0)
   {
     throw InvalidIndexException();
   }

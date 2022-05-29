@@ -25,6 +25,6 @@ class SimpleList {
 		int numElements;
 		T* elements;
 };
-#include "SimpleList.cpp"
+
 
 #endif
